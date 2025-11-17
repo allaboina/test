@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:3.9-slim'
-        }
-    }
+    agent any
     
     stages {
         stage('Checkout') {
@@ -14,13 +10,13 @@ pipeline {
         
         stage('Install Dependencies') {
             steps {
-                sh 'pip install -r requirements.txt'
+                sh 'pip3 install -r requirements.txt'
             }
         }
         
         stage('Test') {
             steps {
-                sh 'python -m pytest'
+                sh 'python3 -m pytest'
             }
         }
         
